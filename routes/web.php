@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Auth::routes();
 
 //route resource
 Route::resource('/home', \App\Http\Controllers\HomeController::class);
+Route::resource('/produk', \App\Http\Controllers\ProdukController::class);
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/produk/{id}', [ProductController::class, 'show'])->name('produk.show');
+Route::post('/produk/{id}', [ProdukController::class, 'pesanan'])->name('produk.pesanan');

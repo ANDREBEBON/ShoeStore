@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\perusahan;
+use App\Models\produk;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,10 +27,10 @@ class HomeController extends Controller
     {
         // Panggil perusahan models
         $perusahans = perusahan::latest()->paginate(4);
+        $produks = produk::latest()->paginate(4);
 
         //render view with home
-        return view('home', compact('perusahans'));
+        return view('home', compact('perusahans', 'produks'));
+        return view('layouts.app',compact('perusahans', 'produks'));
     }
-
-
 }
